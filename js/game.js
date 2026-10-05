@@ -419,8 +419,8 @@ function showBanner(t1, t2, dur){
 }
 
 const overlayEl = document.getElementById('overlay');
-function overlayCard(html){ overlayEl.innerHTML = '<div class="card">' + html + '</div>'; overlayEl.style.display = 'flex'; }
-function hideOverlay(){ overlayEl.style.display = 'none'; overlayEl.innerHTML = ''; }
+function overlayCard(html){ overlayEl.innerHTML = '<div class="card">' + html + '</div>'; overlayEl.classList.add('show'); }
+function hideOverlay(){ overlayEl.classList.remove('show'); overlayEl.innerHTML = ''; }
 
 function showStart(){
   const ladder = WEAPONS.map(w => w.name).join(' → ');
