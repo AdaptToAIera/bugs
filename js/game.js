@@ -374,10 +374,14 @@ function updateHUD(){
   hud.combo.textContent = 'x' + cm;
   hud.combo.classList.toggle('on', cm > 1);
   let hpTxt;
-  if (game.mode === 2) {
-    hpTxt = 'P1 ' + Math.max(0, plants[0].hp) + '/' + TUNE.plantMax + '  ·  P2 ' + Math.max(0, plants[1].hp) + '/' + TUNE.plantMax;
+  if (plants.length >= 1) {
+    if (game.mode === 2 && plants.length >= 2) {
+      hpTxt = 'P1 ' + Math.max(0, plants[0].hp) + '/' + TUNE.plantMax + '  ·  P2 ' + Math.max(0, plants[1].hp) + '/' + TUNE.plantMax;
+    } else {
+      hpTxt = '🌱 ' + Math.max(0, plants[0].hp) + '/' + TUNE.plantMax;
+    }
   } else {
-    hpTxt = '🌱 ' + Math.max(0, plants[0].hp) + '/' + TUNE.plantMax;
+    hpTxt = '';   // no game started yet (title screen) — don't read an empty plants array
   }
   if (hudCache.hp !== hpTxt) { hud.plantHp.textContent = hpTxt; hudCache.hp = hpTxt; }
   const hint = game.state === 'play' ? (game.mode === 2 ? 'FIRST TO 10 WINS' : 'GROW TO 10') : '';
