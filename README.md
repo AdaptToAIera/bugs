@@ -1,4 +1,4 @@
-# 🐞 Bugs! — Garden Defender (Modern Edition)
+# 🐞 Bugs! — Garden Defender
 
 A fast, juicy browser action game: play as the **Gardener** and spray off the waves of
 cartoon bugs trying to eat your plant. Grow the plant to full bloom, unlock better
