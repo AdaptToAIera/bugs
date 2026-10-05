@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>Bugs! — Garden Defender (Modern Edition)</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="stage">
+  <canvas id="game"></canvas>
+  <div id="hud">
+    <div class="panel" id="panelL">
+      <div class="row big" id="score">SCORE 000</div>
+      <div class="row" id="level">LEVEL 1</div>
+      <div class="row" id="weapon">CAN</div>
+      <div class="wepbar" id="wepBar"></div>
+      <div class="row combo" id="combo">x1</div>
+    </div>
+    <div class="panel" id="panelR">
+      <div class="row hp" id="plantHp">🌱 5/10</div>
+      <div class="row sub" id="hint">GROW TO 10</div>
+      <div class="cbar" id="cardBar"></div>
+    </div>
+  </div>
+  <div id="uiBtns">
+    <button id="btnMute" title="Mute (M)" aria-label="Toggle sound">🔊</button>
+    <button id="btnPause" title="Pause (P)" aria-label="Pause or resume">⏸</button>
+  </div>
+  <div id="touchUI">
+    <div id="dpad">
+      <div class="dbtn" data-d="up">▲</div>
+      <div class="dbtn" data-d="left">◀</div>
+      <div class="dbtn" data-d="down">▼</div>
+      <div class="dbtn" data-d="right">▶</div>
+    </div>
+    <div id="fireBtn">SPRAY</div>
+  </div>
+  <div id="banner"></div>
+  <div id="rotateHint">📱 Rotate your device to landscape for the best experience</div>
+  <div id="overlay"></div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/effects.js"></script>
+<script src="js/sprites.js"></script>
+<script src="js/entities.js"></script>
+<script src="js/input.js"></script>
+<script src="js/game.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
