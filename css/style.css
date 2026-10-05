@@ -74,8 +74,9 @@ html, body {
 #banner .t2 { font-size:20px; font-weight:800; color:#fff; text-shadow:0 2px 0 rgba(0,0,0,.4); }
 
 /* ---- overlay (pause / gameover / win / start) ---- */
-#overlay { position:fixed; inset:0; display:none; align-items:center; justify-content:center;
+#overlay { position:fixed; inset:0; display:none; place-items:center; align-items:center; justify-content:center;
   background:rgba(6,10,20,.55); backdrop-filter:blur(3px); }
+#overlay.show { display:grid; }
 #overlay .card { background:linear-gradient(180deg,#16233d,#0e1830); border:1px solid rgba(255,255,255,.14);
   border-radius:22px; padding:30px 40px; text-align:center; box-shadow:0 30px 90px rgba(0,0,0,.6); max-width:90%; }
 #overlay h1 { font-size:34px; font-weight:900; margin-bottom:6px; }
