@@ -98,7 +98,7 @@ v2_modern/
 
 MIT License
 
-Copyright (c) 2025 the Bugs! authors
+Copyright (c) 2026 the Bugs! authors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
