@@ -1,0 +1,89 @@
+/* Bugs! Modern Edition — styles */
+:root { --textDim: rgba(255,255,255,.7); }
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html, body {
+  height:100%; width:100%; overflow:hidden; touch-action:none; overscroll-behavior:none;
+  background:#0b1220; font-family:"Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  user-select:none; -webkit-user-select:none;
+}
+#stage { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; }
+#game { border-radius:14px; box-shadow:0 24px 80px rgba(0,0,0,.55), 0 0 0 4px rgba(255,255,255,.04);
+  background:#87c7ff; max-width:100%; max-height:100%; }
+
+/* ---- HUD ---- */
+#hud { position:fixed; top:calc(env(safe-area-inset-top) + 14px); left:0; right:0;
+  display:flex; justify-content:space-between; padding:0 18px; pointer-events:none; }
+.panel { background:rgba(12,20,35,.55); backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,.12);
+  border-radius:14px; padding:10px 14px; display:flex; flex-direction:column; gap:4px; min-width:120px;
+  box-shadow:0 8px 24px rgba(0,0,0,.3); }
+#panelR { align-items:flex-end; }
+.row { color:#fff; font-weight:800; letter-spacing:.4px; font-size:15px; }
+.row.big { font-size:22px; color:#ffe14d; }
+.row.sub { font-size:11px; color:rgba(255,255,255,.65); font-weight:700; }
+.row.hp { color:#8bff5e; font-size:18px; }
+.row.combo { color:#ff9de2; font-size:13px; opacity:0; transition:opacity .15s; }
+.row.combo.on { opacity:1; }
+
+/* ---- weapon progression bar (5 slots) ---- */
+.wepbar { display:flex; gap:5px; margin-top:6px; }
+.wslot { width:26px; height:26px; border-radius:7px; display:flex; align-items:center; justify-content:center;
+  font-size:10px; font-weight:900; background:rgba(255,255,255,.08); color:rgba(255,255,255,.3);
+  border:1px solid rgba(255,255,255,.1); transition:all .2s; }
+.wslot.open { background:rgba(62,166,255,.25); color:#cfe6ff; border-color:rgba(62,166,255,.5); }
+.wslot.cur { background:linear-gradient(180deg,#ffe14d,#ffb03a); color:#3a2a10; border-color:#ffe14d;
+  box-shadow:0 0 14px rgba(255,225,77,.7); transform:scale(1.12); }
+
+/* ---- collected-cards row (6 slots) ---- */
+.cbar { display:flex; gap:4px; margin-top:8px; }
+.cslot { width:22px; height:22px; border-radius:6px; display:flex; align-items:center; justify-content:center;
+  font-size:11px; background:rgba(255,255,255,.06); border:1px dashed rgba(255,255,255,.2); color:rgba(255,255,255,.35); }
+.cslot.got { border-style:solid; }
+
+/* ---- buttons (right-center: clear of the top HUD panels and the bottom touch UI) ---- */
+#uiBtns { position:fixed; top:50%; right:14px; transform:translateY(-50%); display:flex; flex-direction:column; gap:8px; }
+#uiBtns button { width:44px; height:44px; border-radius:12px; border:1px solid rgba(255,255,255,.15);
+  background:rgba(12,20,35,.6); color:#fff; font-size:20px; cursor:pointer; }
+#uiBtns button:active { transform:scale(.94); background:rgba(20,32,52,.8); }
+
+/* ---- rotate hint (portrait) ---- */
+#rotateHint { position:fixed; top:calc(env(safe-area-inset-top) + 10px); left:50%; transform:translateX(-50%);
+  background:rgba(12,20,35,.7); color:rgba(255,255,255,.85); font-size:12px; font-weight:700;
+  padding:8px 14px; border-radius:999px; pointer-events:none; z-index:40; white-space:nowrap; }
+
+/* ---- touch controls ---- */
+#touchUI { position:fixed; inset:0; pointer-events:none; display:none; }
+#dpad { position:absolute; left:calc(env(safe-area-inset-left) + 16px); bottom:calc(env(safe-area-inset-bottom) + 16px);
+  width:150px; height:150px; pointer-events:auto; }
+.dbtn { position:absolute; width:52px; height:52px; border-radius:14px; background:rgba(12,20,35,.55);
+  border:1px solid rgba(255,255,255,.18); color:#fff; font-size:20px; display:flex; align-items:center;
+  justify-content:center; cursor:pointer; }
+.dbtn:active { background:rgba(30,44,70,.85); }
+.dbtn[data-d="up"]   { top:0; left:50%; transform:translateX(-50%); }
+.dbtn[data-d="down"] { bottom:0; left:50%; transform:translateX(-50%); }
+.dbtn[data-d="left"] { left:0; top:50%; transform:translateY(-50%); }
+.dbtn[data-d="right"]{ right:0; top:50%; transform:translateY(-50%); }
+#fireBtn { position:absolute; right:calc(env(safe-area-inset-right) + 16px); bottom:calc(env(safe-area-inset-bottom) + 24px);
+  width:104px; height:104px; border-radius:50%; background:rgba(255,80,80,.6); border:2px solid rgba(255,255,255,.35);
+  color:#fff; font-weight:900; font-size:18px; display:flex; align-items:center; justify-content:center;
+  pointer-events:auto; box-shadow:0 10px 30px rgba(255,80,80,.4); }
+#fireBtn:active { background:rgba(255,80,80,.9); transform:scale(.95); }
+
+/* ---- banner (level / weapon / tutorial) ---- */
+#banner { position:fixed; top:24%; left:0; right:0; text-align:center; pointer-events:none; opacity:0; }
+#banner .t1 { font-size:44px; font-weight:900; color:#ffe14d; text-shadow:0 4px 0 rgba(0,0,0,.35), 0 0 24px rgba(255,225,77,.6); }
+#banner .t2 { font-size:20px; font-weight:800; color:#fff; text-shadow:0 2px 0 rgba(0,0,0,.4); }
+
+/* ---- overlay (pause / gameover / win / start) ---- */
+#overlay { position:fixed; inset:0; display:none; align-items:center; justify-content:center;
+  background:rgba(6,10,20,.55); backdrop-filter:blur(3px); }
+#overlay .card { background:linear-gradient(180deg,#16233d,#0e1830); border:1px solid rgba(255,255,255,.14);
+  border-radius:22px; padding:30px 40px; text-align:center; box-shadow:0 30px 90px rgba(0,0,0,.6); max-width:90%; }
+#overlay h1 { font-size:34px; font-weight:900; margin-bottom:6px; }
+#overlay h2 { font-size:18px; font-weight:700; color:#8fb3ff; margin-bottom:18px; }
+#overlay .stat { font-size:20px; font-weight:800; color:#ffe14d; margin:4px 0; }
+#overlay .btns { display:flex; gap:12px; justify-content:center; margin-top:22px; flex-wrap:wrap; }
+#overlay button { padding:12px 22px; border-radius:12px; border:none; font-weight:800; font-size:15px; cursor:pointer;
+  background:#3ea6ff; color:#fff; }
+#overlay button.secondary { background:rgba(255,255,255,.14); }
+#overlay button:active { transform:scale(.96); }
+#overlay .tip { margin-top:14px; font-size:12px; color:rgba(255,255,255,.5); font-weight:700; }
